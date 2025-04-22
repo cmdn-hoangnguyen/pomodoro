@@ -1,4 +1,5 @@
 import HeroSection from "@/components/HeroSection";
+import ValueSection from "@/components/ValueSection";
 import { SECTION_IDS } from "@/utils/constants";
 import { ReactNode } from "react";
 
@@ -14,15 +15,15 @@ export default function Home() {
       data: <HeroSection />
     },
     [SECTION_IDS.VALUE]: {
-      className: "bg-[var(--primary)]",
-      data: <></>
+      className: "bg-[var(--muted)]",
+      data: <ValueSection />
     },
     [SECTION_IDS.APPLICATION]: {
       className: "bg-[var(--secondary)]",
       data: <></>
     },
     [SECTION_IDS.QUOTATION]: {
-      className: "bg-[var(--primary)]",
+      className: "bg-[var(--muted)]",
       data: <></>
     }
   }
