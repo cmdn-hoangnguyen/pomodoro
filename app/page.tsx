@@ -1,3 +1,4 @@
+import DescriptionSection from "@/components/DescriptionSection";
 import HeroSection from "@/components/HeroSection";
 import ValueSection from "@/components/ValueSection";
 import { SECTION_IDS } from "@/utils/constants";
@@ -16,7 +17,7 @@ export default function Home() {
     },
     [SECTION_IDS.DESCRIPTION]: {
       className: "bg-[var(--muted)]",
-      data: <></>
+      data: <DescriptionSection />
     },
     [SECTION_IDS.VALUE]: {
       className: "bg-[var(--secondary)]",

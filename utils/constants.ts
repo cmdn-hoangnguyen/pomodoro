@@ -5,3 +5,9 @@ export enum SECTION_IDS {
     VALUE = "value",
     APPLICATION = "application",
 }
+
+export enum DESCRIPTION_CONTENT {
+    WHAT_IS = "what-is",
+    HISTORY = "history",
+    HOW_TO = "how-to"
+}
