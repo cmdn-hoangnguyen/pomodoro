@@ -5,30 +5,24 @@ import { SECTION_IDS } from "@/utils/constants";
 import { ReactNode } from "react";
 
 type SectionType = {
-  className: string,
   data: ReactNode
 }
 
 export default function Home() {
   const sections: Record<SECTION_IDS, SectionType> = {
     [SECTION_IDS.HERO]: {
-      className: "bg-[var(--secondary)]",
       data: <HeroSection />
     },
     [SECTION_IDS.DESCRIPTION]: {
-      className: "bg-[var(--muted)]",
       data: <DescriptionSection />
     },
     [SECTION_IDS.VALUE]: {
-      className: "bg-[var(--secondary)]",
       data: <ValueSection />
     },
     [SECTION_IDS.APPLICATION]: {
-      className: "bg-[var(--muted)]",
       data: <></>
     },
     [SECTION_IDS.QUOTATION]: {
-      className: "bg-[var(--secondary)]",
       data: <></>
     }
   }
@@ -44,12 +38,16 @@ export default function Home() {
       <main className="min-h-screen font-[family-name:var(--font-geist-sans)]">
         {renderSections.map((item, index) => {
           return (
-            <section key={item} id={item} className={sections[item].className}>
-              <div className="max-w-[70%] mx-auto py-10">
+            <section key={item} id={item} className="bg-[var(--muted)]">
+              <div
+                className={`max-w-[70%] mx-auto relative ${
+                  index === 0 ? "pb-10" : "p-10"
+                }`}
+              >
                 {sections[item].data}
               </div>
             </section>
-          )
+          );
         })}
       </main>
 

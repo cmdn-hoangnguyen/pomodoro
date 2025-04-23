@@ -5,6 +5,7 @@ config.autoAddCss = false;
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "./app.css";
 import "../libs/fontawesome";
 
 const geistSans = Geist({

@@ -1,0 +1,47 @@
+.icon--rotate-up-and-down {
+    transition: all 0.3s ease-out;
+    animation: rotateUpAndDown 6s infinite;
+}
+
+.icon--up-and-down {
+    transition: all 0.3s ease-out;
+    animation: upAndDown 2s infinite;
+}
+
+@keyframes rotateUpAndDown {
+    0% {
+        transform: rotate(0deg) translateY(0%); 
+    }
+
+    20% {
+        transform: rotate(-5deg) translateY(-3%);
+    }
+
+    40% {
+        transform: rotate(0deg) translateY(-3%);
+    }
+
+    60% {
+        transform: rotate(5deg) translateY(0%);
+    }
+
+    80% {
+        transform: rotate(-5deg) translateY(0%);
+    }
+
+    100% {
+        transform: rotate(0deg) translateY(0%); 
+    }
+}
+
+@keyframes upAndDown {
+    0%  {
+        transform: translateY(0%);
+    }
+    50%  {
+        transform: translateY(15%);
+    }
+    100%  {
+        transform: translateY(0%);
+    }
+}
