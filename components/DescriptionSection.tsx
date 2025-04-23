@@ -2,6 +2,7 @@ import { DESCRIPTION_CONTENT } from "@/utils/constants";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { JSX } from "react";
+import Card from "./card/Card";
 
 type DescriptionType = {
   title: string;
@@ -114,8 +115,9 @@ const DescriptionSection = () => {
           <p>Do you know anything about the pomodoro technique?</p>
         </div>
 
-        <div className="bg-white p-10 rounded-2xl flex flex-col gap-6 shadow">
-          {renderDescription.map((item, index) => {
+        <Card
+          isBorderTop={false}
+          content={renderDescription.map((item, index) => {
             return (
               <article key={index}>
                 <h3 className="font-semibold mb-1">
@@ -133,7 +135,7 @@ const DescriptionSection = () => {
               </article>
             );
           })}
-        </div>
+        />
       </div>
     </>
   );

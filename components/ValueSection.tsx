@@ -71,8 +71,12 @@ const ValueSection = () => {
             return (
               <li key={value.title} className="col-span-4 h-[16rem]">
                 <Card
-                  title={value.title}
-                  description={value.description}
+                  content={
+                    <>
+                      <h4 className="uppercase font-semibold text-center">{value.title}</h4>
+                      <p className="text-center">{value.description}</p>
+                    </>
+                  }
                   icon={value.icon}
                 />
               </li>

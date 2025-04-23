@@ -1,3 +1,4 @@
+import ApplicationSection from "@/components/ApplicationSection";
 import DescriptionSection from "@/components/DescriptionSection";
 import HeroSection from "@/components/HeroSection";
 import ValueSection from "@/components/ValueSection";
@@ -20,7 +21,7 @@ export default function Home() {
       data: <ValueSection />
     },
     [SECTION_IDS.APPLICATION]: {
-      data: <></>
+      data: <ApplicationSection />
     },
     [SECTION_IDS.QUOTATION]: {
       data: <></>
@@ -41,7 +42,7 @@ export default function Home() {
             <section key={item} id={item} className="bg-[var(--muted)]">
               <div
                 className={`max-w-[70%] mx-auto relative ${
-                  index === 0 ? "pb-10" : "p-10"
+                  index === 0 ? "" : "p-14"
                 }`}
               >
                 {sections[item].data}
