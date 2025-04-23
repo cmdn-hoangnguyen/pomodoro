@@ -14,22 +14,26 @@ export default function Home() {
       className: "bg-[var(--secondary)]",
       data: <HeroSection />
     },
-    [SECTION_IDS.VALUE]: {
+    [SECTION_IDS.DESCRIPTION]: {
       className: "bg-[var(--muted)]",
+      data: <></>
+    },
+    [SECTION_IDS.VALUE]: {
+      className: "bg-[var(--secondary)]",
       data: <ValueSection />
     },
     [SECTION_IDS.APPLICATION]: {
-      className: "bg-[var(--secondary)]",
+      className: "bg-[var(--muted)]",
       data: <></>
     },
     [SECTION_IDS.QUOTATION]: {
-      className: "bg-[var(--muted)]",
+      className: "bg-[var(--secondary)]",
       data: <></>
     }
   }
 
   const renderSections = [
-    SECTION_IDS.HERO, SECTION_IDS.VALUE, SECTION_IDS.APPLICATION, SECTION_IDS.QUOTATION,
+    SECTION_IDS.HERO, SECTION_IDS.DESCRIPTION, SECTION_IDS.VALUE, SECTION_IDS.APPLICATION, SECTION_IDS.QUOTATION,
   ]
 
   return (
@@ -37,7 +41,7 @@ export default function Home() {
       <header></header>
 
       <main className="min-h-screen font-[family-name:var(--font-geist-sans)]">
-        {renderSections.map((item) => {
+        {renderSections.map((item, index) => {
           return (
             <section key={item} id={item} className={sections[item].className}>
               <div className="max-w-[70%] mx-auto py-10">
