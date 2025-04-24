@@ -68,7 +68,7 @@ const ApplicationSection = () => {
       text: "Total working time",
     },
     {
-      result: `${result.totalPomodoroCycle} Pomodoro`,
+      result: `${result.totalPomodoroCycle} Pomo`,
       text: "Pomodoro cycles",
     },
     {
@@ -117,7 +117,7 @@ const ApplicationSection = () => {
         {index !== 0 && (
           <FontAwesomeIcon
             icon={faArrowRight}
-            className="md:text-xs absolute top-[50%] left-[0] translate-y-[-50%] md:translate-x-[-150%] translate-x-[-110%] h-"
+            className="text-xs absolute top-[50%] left-[0] translate-y-[-50%] md:translate-x-[-150%] translate-x-[-100%] h-"
           />
         )}
 
@@ -186,9 +186,16 @@ const ApplicationSection = () => {
                     className="border border-[var(--secondary)] px-4 h-12 rounded-lg focus:outline-[var(--primary)]"
                     name="schedule"
                     type="number"
+                    min={1}
                     value={inputValue}
                     onChange={(e) => {
                       e.preventDefault();
+
+                      if (e.target.value === "") {
+                        setInputValue(1);
+                        return;
+                      }
+
                       setInputValue(Number(e.target.value));
                     }}
                   />
