@@ -204,7 +204,7 @@ const ApplicationSection = () => {
               </div>
 
               <div className="flex flex-col gap-2">
-                <p className={`${subTitleFontSize} capitalize`}>
+                <p className={`${subTitleFontSize} font-semibold capitalize`}>
                   your pomodoro result
                 </p>
 

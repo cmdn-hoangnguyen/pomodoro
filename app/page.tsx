@@ -1,6 +1,7 @@
 import ApplicationSection from "@/components/ApplicationSection";
 import DescriptionSection from "@/components/DescriptionSection";
 import HeroSection from "@/components/HeroSection";
+import QuotationSection from "@/components/QuotationSection";
 import ValueSection from "@/components/ValueSection";
 import { SECTION_IDS } from "@/utils/constants";
 import { ReactNode } from "react";
@@ -24,7 +25,7 @@ export default function Home() {
       data: <ApplicationSection />,
     },
     [SECTION_IDS.QUOTATION]: {
-      data: <></>,
+      data: <QuotationSection /> ,
     },
   };
 
