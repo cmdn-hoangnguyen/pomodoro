@@ -11,3 +11,10 @@ export enum DESCRIPTION_CONTENT {
     HISTORY = "history",
     HOW_TO = "how-to"
 }
+
+export enum SCHEDULE_STATUS {
+    WORKING = "working",
+    SHORT_BREAK = "short-break",
+    LONG_BREAK = "long-break",
+    FINISH = "finish"
+}

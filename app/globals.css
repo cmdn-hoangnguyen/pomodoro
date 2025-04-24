@@ -4,7 +4,16 @@
   --primary: #ff6347;
   --secondary: #ffe6e0;
   --accent: #2b2d42;
-  --muted: #fff8f7; 
+  --muted: #fff8f7;
+
+  --success: #4CAF50;
+  --success-secondary: #e6f4ea;
+
+  --info: #5c677d;
+  --info-secondary: #edf1f5;
+
+  --blue: #3b82f6;
+  --blue-secondary: #e0f2fe;
 }
 
 body {

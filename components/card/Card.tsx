@@ -10,7 +10,7 @@ const Card = ({ content, icon, isBorderTop = true }: CardProps) => {
   return (
     <>
       <div
-        className={`w-full h-full px-6 py-4 flex flex-col gap-4 bg-white rounded-2xl shadow
+        className={`w-full h-full p-6 flex flex-col gap-4 bg-white rounded-2xl shadow
                 ${
                   isBorderTop ? "border-t-4 border-[var(--primary)]" : ""
                 }              
