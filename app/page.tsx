@@ -1,16 +1,21 @@
+"use client";
+
 import ApplicationSection from "@/components/ApplicationSection";
 import DescriptionSection from "@/components/DescriptionSection";
 import HeroSection from "@/components/HeroSection";
+import LoadingFullPage from "@/components/loading/LoadingFullpage";
 import QuotationSection from "@/components/QuotationSection";
 import ValueSection from "@/components/ValueSection";
 import { SECTION_IDS } from "@/utils/constants";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 
 type SectionType = {
   data: ReactNode;
 };
 
 export default function Home() {
+  const [count, setCount] = useState<number>(0);
+
   const sections: Record<SECTION_IDS, SectionType> = {
     [SECTION_IDS.HERO]: {
       data: <HeroSection />,
@@ -25,7 +30,7 @@ export default function Home() {
       data: <ApplicationSection />,
     },
     [SECTION_IDS.QUOTATION]: {
-      data: <QuotationSection /> ,
+      data: <QuotationSection />,
     },
   };
 
@@ -37,8 +42,27 @@ export default function Home() {
     SECTION_IDS.QUOTATION,
   ];
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount((prev) => {
+        if (prev >= 1) {
+          window.scrollTo({ top: 0, behavior: 'smooth' })
+        }
+
+        if (prev >= 2.2) {
+          clearInterval(interval);
+          return prev;
+        }
+        return prev + 0.1;
+      });
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <>
+      {count < 2.2 && <LoadingFullPage />}
       <main className="min-h-screen font-[family-name:var(--font-geist-sans)]">
         {renderSections.map((item, index) => {
           return (
@@ -55,7 +79,9 @@ export default function Home() {
         })}
       </main>
 
-      <footer className="bg-[var(--accent)]">footer</footer>
+      <footer className="bg-[var(--accent)] text-white py-4 text-center text-sm">
+        © 2025 Hoang from Classmethod. All rights reserved.
+      </footer>
     </>
   );
 }
