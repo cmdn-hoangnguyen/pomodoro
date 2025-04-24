@@ -9,6 +9,11 @@ import {
   faHourglassStart,
 } from "@fortawesome/free-solid-svg-icons";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import {
+  baseFontSize,
+  secondHeadingFontSize,
+  subTitleFontSize,
+} from "@/utils/commonStyle";
 
 const ValueSection = () => {
   const CustomIcon = ({ icon }: { icon: IconProp }) => {
@@ -17,7 +22,7 @@ const ValueSection = () => {
 
   const data = [
     {
-      title: "Increased Focus and Concentration",
+      title: "Increased Concentration",
       description:
         "Work in distraction-free 25-minute sprints to boost concentration, achieve flow, and produce higher quality results.",
       icon: <CustomIcon icon={faEye} />,
@@ -58,24 +63,35 @@ const ValueSection = () => {
     <>
       <div className="flex flex-col gap-6">
         <div className="flex flex-col items-center gap-2">
-          <h2 className="text-black text-3xl font-bold">
+          <h2 className={`${secondHeadingFontSize} text-black font-bold`}>
             Pomodoro
             <span className="text-[var(--primary)]"> Benefits</span>
           </h2>
 
-          <p>Discover the powerful values of the Pomodoro Technique</p>
+          <p className={subTitleFontSize}>
+            Discover the powerful values of the Pomodoro Technique
+          </p>
         </div>
 
-        <ul className="grid grid-cols-12 gap-6">
+        <ul className="grid grid-cols-12 xl:min-h-[40rem] gap-6">
           {data.map((value) => {
             return (
-              <li key={value.title} className="col-span-4 h-[16rem]">
+              <li
+                key={value.title}
+                className="2xl:col-span-4 md:col-span-6 col-span-12 xl:h-[20rem] lg:h-[18rem] md:h-[16rem] h-[15rem]"
+              >
                 <Card
                   content={
-                    <>
-                      <h4 className="uppercase font-semibold text-center">{value.title}</h4>
-                      <p className="text-center">{value.description}</p>
-                    </>
+                    <div className="flex flex-col gap-4 xl:mt-2">
+                      <p
+                        className={`${baseFontSize} uppercase font-semibold text-center h-8 flex items-center justify-center`}
+                      >
+                        {value.title}
+                      </p>
+                      <p className={`${baseFontSize} text-center`}>
+                        {value.description}
+                      </p>
+                    </div>
                   }
                   icon={value.icon}
                 />

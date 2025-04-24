@@ -3,6 +3,11 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { JSX } from "react";
 import Card from "./card/Card";
+import {
+  baseFontSize,
+  secondHeadingFontSize,
+  subTitleFontSize,
+} from "@/utils/commonStyle";
 
 type DescriptionType = {
   title: string;
@@ -14,7 +19,7 @@ const DescriptionSection = () => {
     [DESCRIPTION_CONTENT.WHAT_IS]: {
       title: "What is Pomodoro?",
       content: (
-        <p>
+        <p className={`${baseFontSize}`}>
           The Pomodoro Technique is a time management method that breaks work
           into focused 25-minute intervals called pomodoros, followed by short
           breaks. It's designed to help you stay productive, especially when
@@ -29,20 +34,13 @@ const DescriptionSection = () => {
       title: "History of Pomodoro",
       content: (
         <>
-          <p>
-            You’re probably wondering how this technique was developed and why
-            the intervals of time are measured in units of tomatoes. The
-            Pomodoro Technique was developed in 1987 by Francesco Cirillo, who
-            explains how it came about on his website.
-          </p>
-
-          <p>
-            The Pomodoro Technique was created by Francesco Cirillo when he was
-            a university student struggling to concentrate. Using a
-            tomato-shaped kitchen timer, he challenged himself to stay focused
-            for just two minutes. After finding success, he experimented with
-            different time intervals and discovered that 25 minutes of focused
-            work followed by a 5-minute break was the most effective balance.
+          <p className={`${baseFontSize}`}>
+            The Pomodoro Technique was developed in 1987 by Francesco Cirillo
+            while he was a university student struggling to focus. He began by
+            using a tomato-shaped kitchen timer to stay concentrated for just
+            two minutes. After experimenting, he found that working in 25-minute
+            intervals with 5-minute breaks provided the most effective rhythm
+            for productivity.
           </p>
         </>
       ),
@@ -68,25 +66,25 @@ const DescriptionSection = () => {
 
         return (
           <>
-            <p>
+            <p className={`${baseFontSize}`}>
               <RenderTitle title="Use a timer" />
               Set a timer to stay on track with your pomodoros and breaks. You
               can use a kitchen timer, phone app, or browser extension.
             </p>
 
-            <p>
+            <p className={`${baseFontSize}`}>
               <RenderTitle title="Plan your tasks" />
               Break big tasks into smaller chunks and estimate how many
               pomodoros each will take to stay organized and focused.
             </p>
 
-            <p>
+            <p className={`${baseFontSize}`}>
               <RenderTitle title="Make the most of your breaks" />
               Use break time to hydrate, stretch, snack, or relax—this helps
               recharge your energy before the next session.
             </p>
 
-            <p>
+            <p className={`${baseFontSize}`}>
               <RenderTitle title="Customize the intervals" />
               Adjust the length of work and break intervals to fit your style.
               Flexibility is key to making the technique work for you.
@@ -107,15 +105,48 @@ const DescriptionSection = () => {
     <>
       <div className="flex flex-col gap-6">
         <div className="flex flex-col items-center gap-2">
-          <h2 className="text-black text-3xl font-bold">
+          <h2 className={`${secondHeadingFontSize} text-black font-bold`}>
             Pomodoro
             <span className="text-[var(--primary)]"> Description</span>
           </h2>
 
-          <p>Do you know anything about the pomodoro technique?</p>
+          <p className={subTitleFontSize}>
+            Do you know anything about the pomodoro technique?
+          </p>
         </div>
 
-        <Card
+        <div className="grid grid-cols-12 gap-6">
+          {renderDescription.map((item, index) => {
+            return (
+              <div key={index} className={`${index === renderDescription.length - 1 ? 'col-span-12' : 'xl:col-span-6 md:col-span-6 col-span-12'}`}>
+                <Card
+                  isBorderTop={false}
+                  content={
+                    <article>
+                      <h3 className="font-semibold mb-1">
+                        <span className="inline-block relative w-5 mr-1">
+                          <span className="absolute bg-[var(--primary)] left-0 right-0 top-[50%] bottom-[15%] z-0"></span>
+
+                          <span className="relative z-10">{index + 1}.</span>
+                        </span>
+                        
+                        <span className={baseFontSize}>
+                          {descriptionContent[item].title}
+                        </span>
+                      </h3>
+
+                      <div className="flex flex-col gap-2">
+                        {descriptionContent[item].content}
+                      </div>
+                    </article>
+                  }
+                />
+              </div>
+            );
+          })}
+        </div>
+
+        {/* <Card
           isBorderTop={false}
           content={renderDescription.map((item, index) => {
             return (
@@ -126,7 +157,9 @@ const DescriptionSection = () => {
 
                     <span className="relative z-10">{index + 1}.</span>
                   </span>
-                  {descriptionContent[item].title}
+                  <p className={baseFontSize}>
+                    {descriptionContent[item].title}
+                  </p>
                 </h3>
 
                 <div className="flex flex-col gap-2">
@@ -135,7 +168,7 @@ const DescriptionSection = () => {
               </article>
             );
           })}
-        />
+        /> */}
       </div>
     </>
   );

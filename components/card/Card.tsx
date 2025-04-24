@@ -10,16 +10,18 @@ const Card = ({ content, icon, isBorderTop = true }: CardProps) => {
   return (
     <>
       <div
-        className={`w-full h-full p-6 flex flex-col gap-4 bg-white rounded-2xl shadow
+        className={`w-full h-full xl:p-6 p-4 flex flex-col gap-4 bg-white rounded-2xl shadow hover:shadow-xl transition-all
                 ${
                   isBorderTop ? "border-t-4 border-[var(--primary)]" : ""
                 }              
             `}
       >
         {icon && (
-          <span className="w-18 h-18 m-auto flex justify-center items-center border-4 border-[var(--primary)] rounded-full">
-            {icon}
-          </span>
+          <p className="xl:h-18 lg:h-16 h-14">
+            <span className="xl:w-18 lg:w-16 w-14 xl:h-18 lg:h-16 h-14 m-auto flex justify-center items-center bg-[var(--secondary)] rounded-full">
+              {icon}
+            </span>
+          </p>
         )}
 
         {content}

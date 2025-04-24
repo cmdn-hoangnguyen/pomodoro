@@ -5,6 +5,11 @@ import Card from "./card/Card";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faClock } from "@fortawesome/free-solid-svg-icons";
 import { SCHEDULE_STATUS } from "@/utils/constants";
+import {
+  baseFontSize,
+  secondHeadingFontSize,
+  subTitleFontSize,
+} from "@/utils/commonStyle";
 
 const ApplicationSection = () => {
   const [inputValue, setInputValue] = useState<number>(1);
@@ -48,7 +53,7 @@ const ApplicationSection = () => {
     text: string;
   }) => {
     return (
-      <div className="col-span-3 flex flex-col items-center">
+      <div className="xl:col-span-3 sm:col-span-6 col-span-12 flex flex-col items-center">
         <span className="h-10 text-3xl text-[var(--primary)] font-bold">
           {result}
         </span>
@@ -59,12 +64,12 @@ const ApplicationSection = () => {
 
   const resultArray = [
     {
-      result: result.totalPomodoroCycle.toString(),
-      text: "Pomodoro cycles",
-    },
-    {
       result: `${result.totalWorkingTime} mins`,
       text: "Total working time",
+    },
+    {
+      result: `${result.totalPomodoroCycle} Pomodoro`,
+      text: "Pomodoro cycles",
     },
     {
       result: `${result.totalShortBreak * 5} mins`,
@@ -74,9 +79,7 @@ const ApplicationSection = () => {
       result:
         result.totalLongBreak === 0
           ? "0 mins"
-          : `${result.totalLongBreak * 15} - ${
-              result.totalLongBreak * 30
-            } mins`,
+          : `${result.totalLongBreak * 15} mins`,
       text: `${result.totalLongBreak} long break`,
     },
   ];
@@ -114,20 +117,22 @@ const ApplicationSection = () => {
         {index !== 0 && (
           <FontAwesomeIcon
             icon={faArrowRight}
-            className="absolute top-[50%] left-[0] translate-y-[-50%] translate-x-[-150%] h-"
+            className="md:text-xs absolute top-[50%] left-[0] translate-y-[-50%] md:translate-x-[-150%] translate-x-[-110%] h-"
           />
         )}
 
         {task === SCHEDULE_STATUS.WORKING && (
-          <span className="m-auto text-center">25 mins Working</span>
+          <span className={`${baseFontSize} m-auto text-center wrap sm:w-[90%] w-[50%]`}>
+            25m Working
+          </span>
         )}
 
         {task === SCHEDULE_STATUS.LONG_BREAK && (
-          <span className="m-auto">Long Break</span>
+          <span className={`${baseFontSize} m-auto`}>Long Break</span>
         )}
 
         {task === SCHEDULE_STATUS.SHORT_BREAK && (
-          <span className="m-auto">5 mins Break</span>
+          <span className={`${baseFontSize} text-center m-auto wrap sm:w-[90%] w-[50%]`}>5m Break</span>
         )}
       </div>
     );
@@ -156,12 +161,12 @@ const ApplicationSection = () => {
     <>
       <div className="flex flex-col gap-6">
         <div className="flex flex-col items-center gap-2">
-          <h2 className="text-black text-3xl font-bold">
+          <h2 className={`${secondHeadingFontSize} text-black font-bold`}>
             <span className="text-[var(--primary)]">Try </span>
             It Yourself
           </h2>
 
-          <p>
+          <p className={subTitleFontSize}>
             Generate a personalized Pomodoro schedule by entering your preferred
             work session length.
           </p>
@@ -171,14 +176,14 @@ const ApplicationSection = () => {
           isBorderTop={false}
           content={
             <div className="flex flex-col gap-6">
-              <div className="grid grid-cols-12 gap-6 items-end w-full">
-                <div className="col-span-8 flex flex-col">
+              <div className="grid grid-cols-12 lg:gap-6 gap-2 items-end w-full">
+                <div className="md:col-span-8 col-span-12 flex flex-col">
                   <label htmlFor="schedule">
-                    Working Time (Number x 25 minutes):
+                    Working (Number x 25 minutes):
                   </label>
                   <input
                     id="schedule"
-                    className="border px-4 h-12 rounded-lg focus:outline-[var(--primary)]"
+                    className="border border-[var(--secondary)] px-4 h-12 rounded-lg focus:outline-[var(--primary)]"
                     name="schedule"
                     type="number"
                     value={inputValue}
@@ -191,7 +196,7 @@ const ApplicationSection = () => {
 
                 <button
                   type="button"
-                  className="col-span-4 bg-[var(--primary)] px-4 h-12 text-white rounded-lg cursor-pointer"
+                  className="md:col-span-4 col-span-12 bg-[var(--primary)] px-4 h-12 text-white rounded-lg cursor-pointer"
                   onClick={handleGenerate}
                 >
                   Generate
@@ -199,21 +204,20 @@ const ApplicationSection = () => {
               </div>
 
               <div className="flex flex-col gap-2">
-                <p className="capitalize font-semibold text-2xl text-center">
+                <p className={`${subTitleFontSize} capitalize`}>
                   your pomodoro result
                 </p>
 
                 <div
                   className="transition-all duration-300"
                   style={{
-                    maxHeight: isGenerated ? "50vh" : "fit-content",
                     overflow: "hidden",
                   }}
                 >
-                  {isGenerated && (
+                  {isGenerated ? (
                     <>
-                      <div className="flex flex-col gap-12 border-2 border-[var(--primary)] rounded-2xl p-10">
-                        <div className="grid grid-cols-12">
+                      <div className="flex flex-col gap-12 border-2 border-[var(--primary)] rounded-2xl p-8">
+                        <div className="grid grid-cols-12 md:gap-6 gap-2">
                           {resultArray.map((item, index) => (
                             <GenerateResult
                               key={index}
@@ -225,10 +229,12 @@ const ApplicationSection = () => {
 
                         <div className="flex flex-col gap-6">
                           <div className="flex flex-col">
-                            <p className="text-center font-semibold capitalize">
+                            <p className={`${subTitleFontSize} capitalize`}>
                               Review your schedule:
                             </p>
-                            <p className="text-center text-[var(--info)]">
+                            <p
+                              className={`${baseFontSize} text-center text-[var(--info)]`}
+                            >
                               <FontAwesomeIcon
                                 icon={faClock}
                                 className="mr-2"
@@ -238,18 +244,24 @@ const ApplicationSection = () => {
                             </p>
                           </div>
 
-                          <div className="flex justify-center flex-wrap gap-6">
+                          <div className="flex justify-center flex-wrap md:gap-6 gap-4">
                             {schedule.map((item, index) => {
-                              return <ScheduleCard task={item} index={index} />;
+                              return (
+                                <ScheduleCard
+                                  key={index}
+                                  task={item}
+                                  index={index}
+                                />
+                              );
                             })}
                           </div>
                         </div>
                       </div>
                     </>
-                  )}
-
-                  {!isGenerated && (
-                    <p className="text-center">Try generate something!</p>
+                  ) : (
+                    <p className={`${baseFontSize} text-center`}>
+                      Try generate something!
+                    </p>
                   )}
                 </div>
               </div>
