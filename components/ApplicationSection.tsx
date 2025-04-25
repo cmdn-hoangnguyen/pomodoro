@@ -1,15 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Card from "./card/Card";
+import Card from "./Card";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faClock } from "@fortawesome/free-solid-svg-icons";
-import { SCHEDULE_STATUS } from "@/utils/constants";
 import {
   baseFontSize,
   secondHeadingFontSize,
   subTitleFontSize,
 } from "@/utils/commonStyle";
+import { SCHEDULE_STATUS } from "@/constants/enum";
+import SectionTitle from "./SectionTitle";
 
 const ApplicationSection = () => {
   const [inputValue, setInputValue] = useState<string>("1");
@@ -172,17 +173,12 @@ const ApplicationSection = () => {
   return (
     <>
       <div className="flex flex-col gap-6">
-        <div className="flex flex-col items-center gap-2">
-          <h2 className={`${secondHeadingFontSize} text-black font-bold`}>
-            <span className="text-[var(--primary)]">Try </span>
-            It Yourself
-          </h2>
-
-          <p className={subTitleFontSize}>
-            Generate a personalized Pomodoro schedule by entering your preferred
-            work session length.
-          </p>
-        </div>
+        <SectionTitle
+          heading="It Yourself"
+          highlightHeading="Try"
+          subTitle="Generate a personalized Pomodoro schedule by entering your preferred work session length."
+          isHighlightFirst={true}
+        />
 
         <Card
           isBorderTop={false}

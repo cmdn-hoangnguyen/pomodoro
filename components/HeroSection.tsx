@@ -1,10 +1,10 @@
 import Image from "next/image";
 import MediumPomodoro from "../public/images/pomodoro-medium.webp";
-import { SECTION_IDS } from "@/utils/constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
-import Circle from "./circle/Circle";
+import Circle from "./BlurBackgroundItem";
 import { baseFontSize, firstHeadingStyle } from "@/utils/commonStyle";
+import { SECTION_IDS } from "@/constants/enum";
 
 const HeroSection = () => {
   return (
@@ -29,7 +29,10 @@ const HeroSection = () => {
           />
         </div>
 
-        <a className="text-[var(--primary)] font-semibold" href={`#${SECTION_IDS.DESCRIPTION}`}>
+        <a
+          className="text-[var(--primary)] font-semibold"
+          href={`#${SECTION_IDS.DESCRIPTION}`}
+        >
           Learn more{" "}
           <span className="inline-block ml-1 icon--up-and-down">
             <FontAwesomeIcon icon={faArrowDown} />
@@ -37,8 +40,8 @@ const HeroSection = () => {
         </a>
       </div>
 
-      <Circle size={20} blur={10} top={0} left={90} right={0} bottom={100}/>
-      <Circle size={30} blur={20} top={80} left={-20} right={100} bottom={0}/>
+      {/* <Circle size={20} blur={10} top={0} left={90} right={0} bottom={100}/> */}
+      <Circle size={30} blur={20} top={80} left={-20} right={100} bottom={0} />
     </>
   );
 };
