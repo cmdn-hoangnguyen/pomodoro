@@ -219,10 +219,10 @@ const ApplicationSection = () => {
                 </div>
 
                 <button
-                  disabled={!inputValue}
+                  disabled={!inputValue || inputValue === "0"}
                   type="button"
                   className={`md:col-span-4 col-span-12 ${
-                    inputValue === ""
+                    inputValue === "" || inputValue === "0"
                       ? "bg-[var(--disable)] text-black"
                       : "bg-[var(--primary)] text-white"
                   }  px-4 h-12  rounded-lg cursor-pointer`}
