@@ -6,8 +6,6 @@
 
 - ⏰ Pomodoro timer with Work, Short Break, and Long Break sessions
 - 🎯 Clean and minimal user interface
-- 🔔 Sound notification at the end of each session
-- 🌗 Light and Dark theme support
 - 📊 Track completed pomodoro cycles
 - ⚙️ Customizable durations for each session
 
