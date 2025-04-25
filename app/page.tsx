@@ -3,10 +3,10 @@
 import ApplicationSection from "@/components/ApplicationSection";
 import DescriptionSection from "@/components/DescriptionSection";
 import HeroSection from "@/components/HeroSection";
-import LoadingFullPage from "@/components/loading/LoadingFullpage";
+import LoadingFullPage from "@/components/LoadingFullpage";
 import QuotationSection from "@/components/QuotationSection";
 import ValueSection from "@/components/ValueSection";
-import { SECTION_IDS } from "@/utils/constants";
+import { SECTION_IDS } from "@/constants/enum";
 import { ReactNode, useEffect, useState } from "react";
 
 type SectionType = {
@@ -46,7 +46,7 @@ export default function Home() {
     const interval = setInterval(() => {
       setCount((prev) => {
         if (prev >= 1) {
-          window.scrollTo({ top: 0, behavior: 'smooth' })
+          window.scrollTo({ top: 0, behavior: "smooth" });
         }
 
         if (prev >= 2.2) {

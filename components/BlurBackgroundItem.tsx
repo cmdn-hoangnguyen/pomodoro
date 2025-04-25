@@ -1,24 +1,24 @@
-type CircleProp = {
+type BlurBackgroundItemProp = {
   size: number;
   top: number;
   left: number;
   bottom: number;
   right: number;
   blur?: number;
-  className?: string
+  className?: string;
 };
 
-const Circle = ({
+const BlurBackgroundItem = ({
   size,
   top,
   left,
   bottom,
   right,
   blur = 0,
-  className = ""
-}: CircleProp) => {
+  className = "",
+}: BlurBackgroundItemProp) => {
   return (
-<div
+    <div
       className={`absolute rounded-full bg-[var(--primary)] ${className}`}
       style={{
         width: `${size}rem`,
@@ -33,4 +33,4 @@ const Circle = ({
   );
 };
 
-export default Circle;
+export default BlurBackgroundItem;

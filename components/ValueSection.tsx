@@ -1,4 +1,4 @@
-import Card from "./card/Card";
+import Card from "./Card";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faClock,
@@ -60,47 +60,45 @@ const ValueSection = () => {
   ];
 
   return (
-    <>
-      <div className="flex flex-col gap-6">
-        <div className="flex flex-col items-center gap-2">
-          <h2 className={`${secondHeadingFontSize} text-black font-bold`}>
-            Pomodoro
-            <span className="text-[var(--primary)]"> Benefits</span>
-          </h2>
+    <div className="flex flex-col gap-6">
+      <div className="flex flex-col items-center gap-2">
+        <h2 className={`${secondHeadingFontSize} text-black font-bold`}>
+          Pomodoro
+          <span className="text-[var(--primary)]"> Benefits</span>
+        </h2>
 
-          <p className={subTitleFontSize}>
-            Discover the powerful values of the Pomodoro Technique
-          </p>
-        </div>
-
-        <ul className="grid grid-cols-12 xl:min-h-[40rem] gap-6">
-          {data.map((value) => {
-            return (
-              <li
-                key={value.title}
-                className="2xl:col-span-4 md:col-span-6 col-span-12 xl:h-[20rem] lg:h-[18rem] md:h-[16rem] h-[15rem]"
-              >
-                <Card
-                  content={
-                    <div className="flex flex-col gap-4 xl:mt-2">
-                      <p
-                        className={`${baseFontSize} uppercase font-semibold text-center h-8 flex items-center justify-center`}
-                      >
-                        {value.title}
-                      </p>
-                      <p className={`${baseFontSize} text-center`}>
-                        {value.description}
-                      </p>
-                    </div>
-                  }
-                  icon={value.icon}
-                />
-              </li>
-            );
-          })}
-        </ul>
+        <p className={subTitleFontSize}>
+          Discover the powerful values of the Pomodoro Technique
+        </p>
       </div>
-    </>
+
+      <ul className="grid grid-cols-12 xl:min-h-[40rem] gap-6">
+        {data.map((value) => {
+          return (
+            <li
+              key={value.title}
+              className="2xl:col-span-4 md:col-span-6 col-span-12 xl:h-[20rem] lg:h-[18rem] md:h-[16rem] h-[15rem]"
+            >
+              <Card
+                content={
+                  <div className="flex flex-col gap-4 xl:mt-2">
+                    <p
+                      className={`${baseFontSize} uppercase font-semibold text-center h-8 flex items-center justify-center`}
+                    >
+                      {value.title}
+                    </p>
+                    <p className={`${baseFontSize} text-center`}>
+                      {value.description}
+                    </p>
+                  </div>
+                }
+                icon={value.icon}
+              />
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 };
 
