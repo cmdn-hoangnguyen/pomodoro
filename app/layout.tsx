@@ -33,7 +33,6 @@ export const metadata: Metadata = {
     "boost productivity",
     "Pomodoro technique",
   ],
-  icons: ""
 };
 
 export default function RootLayout({

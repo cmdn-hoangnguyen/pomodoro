@@ -12,7 +12,7 @@ import {
 } from "@/utils/commonStyle";
 
 const ApplicationSection = () => {
-  const [inputValue, setInputValue] = useState<number>(1);
+  const [inputValue, setInputValue] = useState<string>("1");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isGenerated, setIsGenerated] = useState<boolean>(false);
   const [schedule, setSchedule] = useState<SCHEDULE_STATUS[]>([]);
@@ -24,16 +24,18 @@ const ApplicationSection = () => {
   });
 
   const handleGenerate = () => {
-    if (inputValue <= 0) return setIsGenerated(false);
+    const num = Number(inputValue);
+
+    if (!num || num <= 0) return setIsGenerated(false);
     setSchedule([]);
 
-    const workingTime = inputValue * 25;
+    const workingTime = num * 25;
     const longBreak = workingTime >= 100 ? Math.floor(workingTime / 100) : 0;
 
     setResult({
-      totalShortBreak: inputValue,
+      totalShortBreak: num,
       totalLongBreak: longBreak,
-      totalPomodoroCycle: inputValue,
+      totalPomodoroCycle: num,
       totalWorkingTime: workingTime,
     });
 
@@ -91,7 +93,9 @@ const ApplicationSection = () => {
     task: SCHEDULE_STATUS;
     index: number;
   }) => {
-    if (inputValue < 4 && task === SCHEDULE_STATUS.LONG_BREAK) return;
+    const num = Number(inputValue);
+
+    if (num < 4 && task === SCHEDULE_STATUS.LONG_BREAK) return;
     const resultCardStyle = "relative flex flex-col items-center";
 
     let condition;
@@ -122,7 +126,9 @@ const ApplicationSection = () => {
         )}
 
         {task === SCHEDULE_STATUS.WORKING && (
-          <span className={`${baseFontSize} m-auto text-center wrap sm:w-[90%] w-[50%]`}>
+          <span
+            className={`${baseFontSize} m-auto text-center wrap sm:w-[90%] w-[50%]`}
+          >
             25m Working
           </span>
         )}
@@ -132,14 +138,20 @@ const ApplicationSection = () => {
         )}
 
         {task === SCHEDULE_STATUS.SHORT_BREAK && (
-          <span className={`${baseFontSize} text-center m-auto wrap sm:w-[90%] w-[50%]`}>5m Break</span>
+          <span
+            className={`${baseFontSize} text-center m-auto wrap sm:w-[90%] w-[50%]`}
+          >
+            5m Break
+          </span>
         )}
       </div>
     );
   };
 
   const generateSchedule = () => {
-    let count = inputValue;
+    if (inputValue === null) return;
+
+    let count = Number(inputValue);
     if (count > 4) {
       count = 4;
     }
@@ -192,18 +204,28 @@ const ApplicationSection = () => {
                       e.preventDefault();
 
                       if (e.target.value === "") {
-                        setInputValue(1);
+                        setInputValue("");
                         return;
                       }
 
-                      setInputValue(Number(e.target.value));
+                      if (
+                        !isNaN(Number(e.target.value)) &&
+                        Number(e.target.value) >= 0
+                      ) {
+                        setInputValue(e.target.value);
+                      }
                     }}
                   />
                 </div>
 
                 <button
+                  disabled={!inputValue}
                   type="button"
-                  className="md:col-span-4 col-span-12 bg-[var(--primary)] px-4 h-12 text-white rounded-lg cursor-pointer"
+                  className={`md:col-span-4 col-span-12 ${
+                    inputValue === ""
+                      ? "bg-[var(--disable)] text-black"
+                      : "bg-[var(--primary)] text-white"
+                  }  px-4 h-12  rounded-lg cursor-pointer`}
                   onClick={handleGenerate}
                 >
                   Generate
