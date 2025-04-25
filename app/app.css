@@ -1,0 +1,106 @@
+.icon--rotate-up-and-down {
+    transition: all 0.3s ease-out;
+    animation: rotateUpAndDown 6s infinite;
+}
+
+.icon--up-and-down {
+    transition: all 0.3s ease-out;
+    animation: upAndDown 2s infinite;
+}
+
+.first-tomato,
+.second-tomato,
+.third-tomato,
+.forth-tomato {
+    transition: all 0.5s ease-in;
+    height: 0;
+}
+
+.first-tomato {
+    animation: falling 0.5s forwards;
+}
+
+.second-tomato {
+    animation: falling 0.5s 0.5s forwards;
+}
+
+.third-tomato {
+    animation: falling 0.5s 1s forwards;
+}
+
+.forth-tomato {
+    animation: falling 0.5s 1.5s forwards;
+}
+
+.opacity-bg {
+    transition: all 0.5s ease-in-out;
+    animation: opacity 0.5s 2s forwards;
+}
+
+@keyframes rotateUpAndDown {
+    0% {
+        transform: rotate(0deg) translateY(0%);
+    }
+
+    20% {
+        transform: rotate(-5deg) translateY(-3%);
+    }
+
+    40% {
+        transform: rotate(0deg) translateY(-3%);
+    }
+
+    60% {
+        transform: rotate(5deg) translateY(0%);
+    }
+
+    80% {
+        transform: rotate(-5deg) translateY(0%);
+    }
+
+    100% {
+        transform: rotate(0deg) translateY(0%);
+    }
+}
+
+@keyframes upAndDown {
+    0% {
+        transform: translateY(0%);
+    }
+
+    50% {
+        transform: translateY(15%);
+    }
+
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+@keyframes rotated {
+    0% {
+        rotate: 0deg;
+    }
+
+    100% {
+        rotate: 360deg;
+    }
+}
+
+@keyframes falling {
+    0% {
+        height: 0;
+    }
+    100% {
+        height: 100vh;
+    }
+}
+
+@keyframes opacity {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}

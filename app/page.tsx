@@ -1,103 +1,87 @@
-import Image from "next/image";
+"use client";
+
+import ApplicationSection from "@/components/ApplicationSection";
+import DescriptionSection from "@/components/DescriptionSection";
+import HeroSection from "@/components/HeroSection";
+import LoadingFullPage from "@/components/loading/LoadingFullpage";
+import QuotationSection from "@/components/QuotationSection";
+import ValueSection from "@/components/ValueSection";
+import { SECTION_IDS } from "@/utils/constants";
+import { ReactNode, useEffect, useState } from "react";
+
+type SectionType = {
+  data: ReactNode;
+};
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [count, setCount] = useState<number>(0);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+  const sections: Record<SECTION_IDS, SectionType> = {
+    [SECTION_IDS.HERO]: {
+      data: <HeroSection />,
+    },
+    [SECTION_IDS.DESCRIPTION]: {
+      data: <DescriptionSection />,
+    },
+    [SECTION_IDS.VALUE]: {
+      data: <ValueSection />,
+    },
+    [SECTION_IDS.APPLICATION]: {
+      data: <ApplicationSection />,
+    },
+    [SECTION_IDS.QUOTATION]: {
+      data: <QuotationSection />,
+    },
+  };
+
+  const renderSections = [
+    SECTION_IDS.HERO,
+    SECTION_IDS.DESCRIPTION,
+    SECTION_IDS.VALUE,
+    SECTION_IDS.APPLICATION,
+    SECTION_IDS.QUOTATION,
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount((prev) => {
+        if (prev >= 1) {
+          window.scrollTo({ top: 0, behavior: 'smooth' })
+        }
+
+        if (prev >= 2.2) {
+          clearInterval(interval);
+          return prev;
+        }
+        return prev + 0.1;
+      });
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <>
+      {count < 2.2 && <LoadingFullPage />}
+      <main className="min-h-screen font-[family-name:var(--font-geist-sans)]">
+        {renderSections.map((item, index) => {
+          return (
+            <section key={item} id={item} className="bg-[var(--muted)]">
+              <div
+                className={`2xl:w-[60%] xl:w-[70%] md:w-[80%] w-[90%] mx-auto relative ${
+                  index === 0 ? "" : "xl:p-14 px-4 py-8"
+                }`}
+              >
+                {sections[item].data}
+              </div>
+            </section>
+          );
+        })}
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+
+      <footer className="bg-[var(--accent)] text-white py-4 text-center text-sm">
+        © 2025 Hoang from Classmethod. All rights reserved.
       </footer>
-    </div>
+    </>
   );
 }

@@ -1,0 +1,36 @@
+type CircleProp = {
+  size: number;
+  top: number;
+  left: number;
+  bottom: number;
+  right: number;
+  blur?: number;
+  className?: string
+};
+
+const Circle = ({
+  size,
+  top,
+  left,
+  bottom,
+  right,
+  blur = 0,
+  className = ""
+}: CircleProp) => {
+  return (
+<div
+      className={`absolute rounded-full bg-[var(--primary)] ${className}`}
+      style={{
+        width: `${size}rem`,
+        height: `${size}rem`,
+        top: `${top}%`,
+        left: `${left}%`,
+        bottom: `${bottom}%`,
+        right: `${right}%`,
+        filter: `blur(${blur}rem)`,
+      }}
+    ></div>
+  );
+};
+
+export default Circle;
