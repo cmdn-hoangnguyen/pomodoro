@@ -4,13 +4,13 @@ import { ChangeEvent, useEffect, useState } from "react";
 import Card from "./Card";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
-import { baseFontSize, subTitleFontSize } from "@/utils/commonStyle";
 import { SCHEDULE_STATUS } from "@/constants/enum";
 import SectionTitle from "./SectionTitle";
 import { useRenderSchedule } from "@/hooks/useRenderSchedule";
 import { ResultType } from "@/constants/type";
 import ScheduleCard from "./ScheduleCard";
 import ScheduleResult from "./ScheduleResult";
+import { theme } from "@/constants/styles";
 
 const ApplicationSection = () => {
   const [inputValue, setInputValue] = useState<string>("1");
@@ -95,7 +95,9 @@ const ApplicationSection = () => {
             </div>
 
             <div className="flex flex-col gap-2">
-              <p className={`${subTitleFontSize} font-semibold capitalize`}>
+              <p
+                className={`${theme.font.baseParagraph} font-semibold capitalize`}
+              >
                 your pomodoro result
               </p>
 
@@ -146,7 +148,7 @@ const ApplicationSection = () => {
                     </div>
                   </div>
                 ) : (
-                  <p className={`${baseFontSize} text-center`}>
+                  <p className={`${theme.font.baseParagraph} text-center`}>
                     Try generate something!
                   </p>
                 )}

@@ -1,4 +1,4 @@
-import { secondHeadingFontSize, subTitleFontSize } from "@/utils/commonStyle";
+import { theme } from "@/constants/styles";
 
 type SectionTitleProps = {
   heading: string;
@@ -15,7 +15,7 @@ const SectionTitle = ({
 }: SectionTitleProps) => {
   return (
     <div className="flex flex-col items-center gap-2">
-      <h2 className={`${secondHeadingFontSize} text-black font-bold`}>
+      <h2 className={`${theme.font.secondHeading} text-black font-bold`}>
         {isHighlightFirst && (
           <span className="text-[var(--primary)]">{highlightHeading} </span>
         )}
@@ -27,7 +27,7 @@ const SectionTitle = ({
         )}
       </h2>
 
-      <p className={subTitleFontSize}>{subTitle}</p>
+      <p className={theme.font.subTitle}>{subTitle}</p>
     </div>
   );
 };

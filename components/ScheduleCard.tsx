@@ -1,6 +1,6 @@
 import { SCHEDULE_STATUS } from "@/constants/enum";
+import { theme } from "@/constants/styles";
 import { useRenderSchedule } from "@/hooks/useRenderSchedule";
-import { baseFontSize } from "@/utils/commonStyle";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -27,19 +27,19 @@ const ScheduleCard = ({ task, index, inputValue }: ScheduleCardProps) => {
 
       {task === SCHEDULE_STATUS.WORKING && (
         <span
-          className={`${baseFontSize} m-auto text-center wrap sm:w-[90%] w-[50%]`}
+          className={`${theme.font.baseParagraph} m-auto text-center wrap sm:w-[90%] w-[50%]`}
         >
           25m Working
         </span>
       )}
 
       {task === SCHEDULE_STATUS.LONG_BREAK && (
-        <span className={`${baseFontSize} m-auto`}>Long Break</span>
+        <span className={`${theme.font.baseParagraph} m-auto`}>Long Break</span>
       )}
 
       {task === SCHEDULE_STATUS.SHORT_BREAK && (
         <span
-          className={`${baseFontSize} text-center m-auto wrap sm:w-[90%] w-[50%]`}
+          className={`${theme.font.baseParagraph} text-center m-auto wrap sm:w-[90%] w-[50%]`}
         >
           5m Break
         </span>

@@ -9,11 +9,7 @@ import {
   faHourglassStart,
 } from "@fortawesome/free-solid-svg-icons";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import {
-  baseFontSize,
-  secondHeadingFontSize,
-  subTitleFontSize,
-} from "@/utils/commonStyle";
+import { theme } from "@/constants/styles";
 
 const ValueSection = () => {
   const CustomIcon = ({ icon }: { icon: IconProp }) => {
@@ -62,12 +58,12 @@ const ValueSection = () => {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-col items-center gap-2">
-        <h2 className={`${secondHeadingFontSize} text-black font-bold`}>
+        <h2 className={`${theme.font.secondHeading} text-black`}>
           Pomodoro
           <span className="text-[var(--primary)]"> Benefits</span>
         </h2>
 
-        <p className={subTitleFontSize}>
+        <p className={theme.font.subTitle}>
           Discover the powerful values of the Pomodoro Technique
         </p>
       </div>
@@ -83,11 +79,11 @@ const ValueSection = () => {
                 content={
                   <div className="flex flex-col gap-4 xl:mt-2">
                     <p
-                      className={`${baseFontSize} uppercase font-semibold text-center h-8 flex items-center justify-center`}
+                      className={`${theme.font.baseParagraph} uppercase font-semibold text-center h-8 flex items-center justify-center`}
                     >
                       {value.title}
                     </p>
-                    <p className={`${baseFontSize} text-center`}>
+                    <p className={`${theme.font.baseParagraph} text-center`}>
                       {value.description}
                     </p>
                   </div>

@@ -1,8 +1,8 @@
 import Card from "./Card";
-import { baseFontSize } from "@/utils/commonStyle";
 import { DESCRIPTION_CONTENT } from "@/constants/enum";
 import { useRenderDescription } from "@/hooks/useRenderHowto";
 import SectionTitle from "./SectionTitle";
+import { theme } from "@/constants/styles";
 
 const DescriptionSection = () => {
   const descriptionContent = useRenderDescription();
@@ -44,7 +44,7 @@ const DescriptionSection = () => {
                         <span className="relative z-10">{index + 1}.</span>
                       </span>
 
-                      <span className={baseFontSize}>
+                      <span className={theme.font.baseParagraph}>
                         {descriptionContent[item].title}
                       </span>
                     </h3>

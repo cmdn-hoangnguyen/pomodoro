@@ -3,19 +3,19 @@ import MediumPomodoro from "../public/images/pomodoro-medium.webp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import Circle from "./BlurBackgroundItem";
-import { baseFontSize, firstHeadingStyle } from "@/utils/commonStyle";
 import { SECTION_IDS } from "@/constants/enum";
+import { theme } from "@/constants/styles";
 
 const HeroSection = () => {
   return (
     <>
       <div className="h-[100vh] flex flex-col justify-center items-center">
         <div className="flex flex-col items-center gap-4">
-          <h1 className={firstHeadingStyle}>
+          <h1 className={theme.font.firstHeading}>
             <span className="text-[var(--primary)]">Pomodoro</span> Technique
           </h1>
 
-          <p className={`${baseFontSize} text-black text-center max-w-xl`}>
+          <p className={`${theme.font.subTitle} max-w-xl`}>
             Boost your productivity with the time-tested Pomodoro Technique.
             Work smarter, not harder, and achieve more in less time.
           </p>

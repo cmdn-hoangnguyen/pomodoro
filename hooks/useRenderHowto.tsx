@@ -1,9 +1,9 @@
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { baseFontSize } from "@/utils/commonStyle";
 import { JSX } from "react";
 import { DESCRIPTION_CONTENT } from "@/constants/enum";
 import { practice } from "@/constants/data";
+import { theme } from "@/constants/styles";
 
 export const useRenderDescription = (): Record<
   DESCRIPTION_CONTENT,
@@ -12,7 +12,7 @@ export const useRenderDescription = (): Record<
   const renderHowTo = () => (
     <>
       {practice.map((item, index) => (
-        <p key={index} className={`${baseFontSize}`}>
+        <p key={index} className={theme.font.baseParagraph}>
           <span className="font-semibold flex items-center gap-1 leading-5">
             <FontAwesomeIcon icon={faStar} color="var(--primary)" size="xs" />
             {item.title}:
@@ -27,7 +27,7 @@ export const useRenderDescription = (): Record<
     [DESCRIPTION_CONTENT.WHAT_IS]: {
       title: "What is Pomodoro?",
       content: (
-        <p className={`${baseFontSize}`}>
+        <p className={theme.font.baseParagraph}>
           The Pomodoro Technique is a time management method that breaks work
           into focused 25-minute intervals called pomodoros, followed by short
           breaks. It's designed to help you stay productive, especially when
@@ -41,7 +41,7 @@ export const useRenderDescription = (): Record<
     [DESCRIPTION_CONTENT.HISTORY]: {
       title: "History of Pomodoro",
       content: (
-        <p className={`${baseFontSize}`}>
+        <p className={theme.font.baseParagraph}>
           The Pomodoro Technique was developed in 1987 by Francesco Cirillo
           while he was a university student struggling to focus. He began by
           using a tomato-shaped kitchen timer to stay concentrated for just two

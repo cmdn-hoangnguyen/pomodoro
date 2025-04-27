@@ -19,7 +19,7 @@ const LoadingFullPage = () => {
   ];
 
   return (
-    <div className="animate-opacity animation-delay-2000 fixed inset-0 grid grid-cols-12 bg-white overflow-hidden z-9999">
+    <div className="animate-opacity  animation-delay-2000 fixed inset-0 grid grid-cols-12 bg-white overflow-hidden z-9999">
       {fallingTomato.map((item) => {
         return (
           <div
