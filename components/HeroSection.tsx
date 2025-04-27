@@ -23,7 +23,7 @@ const HeroSection = () => {
 
         <div className="mt-6">
           <Image
-            className="icon--rotate-up-and-down"
+            className="animate-rotateUpAndDown"
             src={MediumPomodoro}
             alt="Pomodoro Technique"
           />
@@ -34,13 +34,12 @@ const HeroSection = () => {
           href={`#${SECTION_IDS.DESCRIPTION}`}
         >
           Learn more{" "}
-          <span className="inline-block ml-1 icon--up-and-down">
+          <span className="inline-block ml-1 animate-upAndDown">
             <FontAwesomeIcon icon={faArrowDown} />
           </span>
         </a>
       </div>
 
-      {/* <Circle size={20} blur={10} top={0} left={90} right={0} bottom={100}/> */}
       <Circle size={30} blur={20} top={80} left={-20} right={100} bottom={0} />
     </>
   );
