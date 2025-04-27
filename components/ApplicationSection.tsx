@@ -121,11 +121,11 @@ const ApplicationSection = () => {
 
                     <div className="flex flex-col gap-6">
                       <div className="flex flex-col">
-                        <p className={`${subTitleFontSize} capitalize`}>
+                        <p className={`${theme.font.subTitle} capitalize`}>
                           Review your schedule:
                         </p>
                         <p
-                          className={`${baseFontSize} text-center text-[var(--info)]`}
+                          className={`${theme.font.baseParagraph} text-center text-[var(--info)]`}
                         >
                           <FontAwesomeIcon icon={faClock} className="mr-2" />
                           After finishing the schedule below, your cycle will
