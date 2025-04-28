@@ -1,3 +1,5 @@
+import { cn } from "@/utils/cn";
+
 type BlurBackgroundItemProp = {
   size: number;
   top: number;
