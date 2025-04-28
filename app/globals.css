@@ -1,5 +1,95 @@
 @import "tailwindcss";
 
+@layer theme, base, components, utilities;
+
+@layer utilities {
+  .animation-delay-500 {
+    animation-delay: 0.5s;
+  }
+
+  .animation-delay-1000 {
+    animation-delay: 1s;
+  }
+
+  .animation-delay-1500 {
+    animation-delay: 1.5s;
+  }
+
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+}
+
+@layer theme {
+  .animate-rotateUpAndDown {
+    animation: rotateUpAndDown 6s infinite ease-in-out;
+  }
+
+  .animate-falling {
+    animation: falling 0.5s forwards;
+  }
+
+  .animate-opacity {
+    animation: opacity 0.5s 2s forwards;
+  }
+
+  .animate-upAndDown {
+    animation: upAndDown 2s infinite;
+  }
+
+  @keyframes rotateUpAndDown {
+    0% {
+      transform: rotate(0deg) translateY(0%);
+    }
+    20% {
+      transform: rotate(-5deg) translateY(-3%);
+    }
+    40% {
+      transform: rotate(0deg) translateY(-3%);
+    }
+    60% {
+      transform: rotate(5deg) translateY(0%);
+    }
+    80% {
+      transform: rotate(-5deg) translateY(0%);
+    }
+    100% {
+      transform: rotate(0deg) translateY(0%);
+    }
+  }
+
+  @keyframes upAndDown {
+    0% {
+      transform: translateY(0%);
+    }
+    50% {
+      transform: translateY(15%);
+    }
+    100% {
+      transform: translateY(0%);
+    }
+  }
+
+  @keyframes falling {
+    0% {
+      height: 0;
+    }
+    100% {
+      height: 100vh;
+    }
+  }
+
+  @keyframes opacity {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+}
+
+
 :root {
   --primary: #ff6347;
   --secondary: #ffe6e0;
