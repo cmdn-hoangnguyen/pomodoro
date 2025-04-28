@@ -7,6 +7,8 @@ import LoadingFullPage from "@/components/LoadingFullpage";
 import QuotationSection from "@/components/QuotationSection";
 import ValueSection from "@/components/ValueSection";
 import { SECTION_IDS } from "@/constants/enum";
+import { theme } from "@/constants/styles";
+import { cn } from "@/utils/cn";
 import { ReactNode, useEffect, useState } from "react";
 
 type SectionType = {
@@ -68,9 +70,10 @@ export default function Home() {
           return (
             <section key={item} id={item} className="bg-[var(--muted)]">
               <div
-                className={`2xl:w-[60%] xl:w-[70%] md:w-[80%] w-[90%] mx-auto relative ${
-                  index === 0 ? "" : "xl:p-14 px-4 py-8"
-                }`}
+                className={cn(
+                  "2xl:w-[60%] xl:w-[70%] md:w-[80%] w-[90%] mx-auto relative",
+                  index !== 0 && "xl:p-14 px-4 py-8"
+                )}
               >
                 {sections[item].data}
               </div>
@@ -79,8 +82,13 @@ export default function Home() {
         })}
       </main>
 
-      <footer className="bg-[var(--accent)] text-white py-4 text-center text-sm">
-        © 2025 Hoang from Classmethod. All rights reserved.
+      <footer
+        className={cn(
+          "bg-[var(--accent)] text-white py-4 text-center text-sm",
+          theme.font.baseParagraph
+        )}
+      >
+        © 2025 Hoang from Classmethod.
       </footer>
     </>
   );

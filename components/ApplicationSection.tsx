@@ -11,6 +11,8 @@ import { ResultType } from "@/constants/type";
 import ScheduleCard from "./ScheduleCard";
 import ScheduleResult from "./ScheduleResult";
 import { theme } from "@/constants/styles";
+import { cn } from "@/utils/cn";
+import PrimaryButton from "./PrimaryButton";
 
 const ApplicationSection = () => {
   const [inputValue, setInputValue] = useState<string>("1");
@@ -72,7 +74,6 @@ const ApplicationSection = () => {
                   className="border border-[var(--secondary)] px-4 h-12 rounded-lg focus:outline-[var(--primary)]"
                   name="schedule"
                   type="number"
-                  min={1}
                   value={inputValue}
                   onChange={(e) => {
                     handleOnChange(e);
@@ -80,33 +81,24 @@ const ApplicationSection = () => {
                 />
               </div>
 
-              <button
-                disabled={!inputValue || inputValue === "0"}
-                type="button"
-                className={`md:col-span-4 col-span-12 ${
-                  inputValue === "" || inputValue === "0"
-                    ? "bg-[var(--disable)] text-black"
-                    : "bg-[var(--primary)] text-white"
-                }  px-4 h-12  rounded-lg cursor-pointer`}
+              <PrimaryButton
+                text="Generate"
                 onClick={handleGenerate}
-              >
-                Generate
-              </button>
+                disabled={inputValue === "" || inputValue === "0"}
+              />
             </div>
 
             <div className="flex flex-col gap-2">
               <p
-                className={`${theme.font.baseParagraph} font-semibold capitalize`}
+                className={cn(
+                  "font-semibold capitalize",
+                  theme.font.baseParagraph
+                )}
               >
                 your pomodoro result
               </p>
 
-              <div
-                className="transition-all duration-300"
-                style={{
-                  overflow: "hidden",
-                }}
-              >
+              <div className="transition-all duration-300 overflow-hidden">
                 {isGenerated ? (
                   <div className="flex flex-col gap-12 border-2 border-[var(--primary)] rounded-2xl p-8">
                     <div className="grid grid-cols-12 md:gap-6 gap-2">
@@ -121,11 +113,14 @@ const ApplicationSection = () => {
 
                     <div className="flex flex-col gap-6">
                       <div className="flex flex-col">
-                        <p className={`${theme.font.subTitle} capitalize`}>
+                        <p className={cn("capitalize", theme.font.subTitle)}>
                           Review your schedule:
                         </p>
                         <p
-                          className={`${theme.font.baseParagraph} text-center text-[var(--info)]`}
+                          className={cn(
+                            "text-center text-[var(--info)]",
+                            theme.font.baseParagraph
+                          )}
                         >
                           <FontAwesomeIcon icon={faClock} className="mr-2" />
                           After finishing the schedule below, your cycle will
@@ -140,7 +135,6 @@ const ApplicationSection = () => {
                               key={index}
                               task={item}
                               index={index}
-                              inputValue={Number(inputValue)}
                             />
                           );
                         })}
@@ -148,7 +142,7 @@ const ApplicationSection = () => {
                     </div>
                   </div>
                 ) : (
-                  <p className={`${theme.font.baseParagraph} text-center`}>
+                  <p className={cn("text-center", theme.font.baseParagraph)}>
                     Try generate something!
                   </p>
                 )}

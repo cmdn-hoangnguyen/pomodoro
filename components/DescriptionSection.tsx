@@ -3,6 +3,7 @@ import { DESCRIPTION_CONTENT } from "@/constants/enum";
 import { useRenderDescription } from "@/hooks/useRenderHowto";
 import SectionTitle from "./SectionTitle";
 import { theme } from "@/constants/styles";
+import { cn } from "@/utils/cn";
 
 const DescriptionSection = () => {
   const descriptionContent = useRenderDescription();
@@ -27,11 +28,11 @@ const DescriptionSection = () => {
           return (
             <div
               key={index}
-              className={`${
+              className={cn(
                 index === renderDescription.length - 1
                   ? "col-span-12"
                   : "xl:col-span-6 md:col-span-6 col-span-12"
-              }`}
+              )}
             >
               <Card
                 isBorderTop={false}

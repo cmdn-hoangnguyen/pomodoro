@@ -1,3 +1,5 @@
+import { cn } from "@/utils/cn";
+
 const LoadingFullPage = () => {
   const fallingTomato = [
     {
@@ -24,7 +26,10 @@ const LoadingFullPage = () => {
         return (
           <div
             key={item.id}
-            className={`${item.className} animate-falling h-0 bg-[var(--muted)] col-span-3 flex justify-center`}
+            className={cn(
+              item.className,
+              "animate-falling h-0 bg-[var(--muted)] col-span-3 flex justify-center"
+            )}
           ></div>
         );
       })}

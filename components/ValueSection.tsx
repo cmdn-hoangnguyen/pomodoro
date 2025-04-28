@@ -10,6 +10,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { theme } from "@/constants/styles";
+import SectionTitle from "./SectionTitle";
+import { cn } from "@/utils/cn";
 
 const ValueSection = () => {
   const CustomIcon = ({ icon }: { icon: IconProp }) => {
@@ -57,16 +59,12 @@ const ValueSection = () => {
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="flex flex-col items-center gap-2">
-        <h2 className={`${theme.font.secondHeading} text-black`}>
-          Pomodoro
-          <span className="text-[var(--primary)]"> Benefits</span>
-        </h2>
-
-        <p className={theme.font.subTitle}>
-          Discover the powerful values of the Pomodoro Technique
-        </p>
-      </div>
+      <SectionTitle
+        heading="Pomodoro"
+        highlightHeading="Benefits"
+        subTitle="Discover the powerful values of the Pomodoro Technique"
+        isHighlightFirst={false}
+      />
 
       <ul className="grid grid-cols-12 xl:min-h-[40rem] gap-6">
         {data.map((value) => {
@@ -79,11 +77,14 @@ const ValueSection = () => {
                 content={
                   <div className="flex flex-col gap-4 xl:mt-2">
                     <p
-                      className={`${theme.font.baseParagraph} uppercase font-semibold text-center h-8 flex items-center justify-center`}
+                      className={cn(
+                        "uppercase font-semibold text-center h-8 flex items-center justify-center",
+                        theme.font.baseParagraph
+                      )}
                     >
                       {value.title}
                     </p>
-                    <p className={`${theme.font.baseParagraph} text-center`}>
+                    <p className={cn("text-center", theme.font.baseParagraph)}>
                       {value.description}
                     </p>
                   </div>

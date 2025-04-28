@@ -5,6 +5,7 @@ import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import Circle from "./BlurBackgroundItem";
 import { SECTION_IDS } from "@/constants/enum";
 import { theme } from "@/constants/styles";
+import { cn } from "@/utils/cn";
 
 const HeroSection = () => {
   return (
@@ -15,7 +16,7 @@ const HeroSection = () => {
             <span className="text-[var(--primary)]">Pomodoro</span> Technique
           </h1>
 
-          <p className={`${theme.font.subTitle} max-w-xl`}>
+          <p className={cn("max-w-xl", theme.font.subTitle)}>
             Boost your productivity with the time-tested Pomodoro Technique.
             Work smarter, not harder, and achieve more in less time.
           </p>
