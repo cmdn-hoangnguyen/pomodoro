@@ -23,7 +23,7 @@ const DescriptionSection = () => {
         isHighlightFirst={false}
       />
 
-      <div className="grid grid-cols-12 gap-6">
+      <div className={theme.layout.gridContainer}>
         {renderDescription.map((item, index) => {
           return (
             <div

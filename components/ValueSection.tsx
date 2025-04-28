@@ -66,7 +66,7 @@ const ValueSection = () => {
         isHighlightFirst={false}
       />
 
-      <ul className="grid grid-cols-12 xl:min-h-[40rem] gap-6">
+      <ul className={cn("xl:min-h-[40rem]", theme.layout.gridContainer)}>
         {data.map((value) => {
           return (
             <li

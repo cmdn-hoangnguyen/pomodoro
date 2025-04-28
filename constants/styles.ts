@@ -6,4 +6,7 @@ export const theme = {
     subTitle: "2xl:text-base text-sm text-center",
     baseParagraph: "2xl:text-base text-sm",
   },
+  layout: {
+    gridContainer: "grid grid-cols-12 gap-6 max-sm:gap-4",
+  },
 };

@@ -19,7 +19,10 @@ const BlurBackgroundItem = ({
 }: BlurBackgroundItemProp) => {
   return (
     <div
-      className={`absolute max-sm:scale-[25%] rounded-full bg-[var(--primary)] ${className}`}
+      className={cn(
+        "absolute max-sm:scale-[45%] rounded-full bg-[var(--primary)]",
+        className
+      )}
       style={{
         width: `${size}rem`,
         height: `${size}rem`,
